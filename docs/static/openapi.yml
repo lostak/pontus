@@ -48864,6 +48864,8 @@ definitions:
     title: >-
       SignatureCounts contains information about signature reporting for a
       number of blocks
+  VelaChain.pontus.sea.MsgCreatePoolPairResponse:
+    type: object
   VelaChain.pontus.sea.Params:
     type: object
     description: Params defines the parameters for the module.

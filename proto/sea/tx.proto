@@ -7,7 +7,22 @@ option go_package = "github.com/VelaChain/pontus/x/sea/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc CreatePoolPair(MsgCreatePoolPair) returns (MsgCreatePoolPairResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreatePoolPair {
+  string creator = 1;
+  string alphaDenom = 2;
+  string alphaAmount = 3;
+  string betaDenom = 4;
+  string betaAmount = 5;
+  string shareAmount = 6;
+  string swapFee = 7;
+  string exitFee = 8;
+}
+
+message MsgCreatePoolPairResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
