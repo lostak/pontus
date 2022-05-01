@@ -1,12 +1,17 @@
 syntax = "proto3";
 package VelaChain.pontus.sea;
 
+import "gogoproto/gogo.proto";
+
 option go_package = "github.com/VelaChain/pontus/x/sea/types";
 
 message Provider {
   string poolName = 1; 
   string address = 2; 
-  string shareAmount = 3; 
+  string shareAmount = 3[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ]; 
   
 }
 

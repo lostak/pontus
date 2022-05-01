@@ -1,6 +1,8 @@
 syntax = "proto3";
 package VelaChain.pontus.sea;
 
+import "gogoproto/gogo.proto";
+
 // this line is used by starport scaffolding # proto/tx/import
 
 option go_package = "github.com/VelaChain/pontus/x/sea/types";
@@ -14,12 +16,27 @@ service Msg {
 message MsgCreatePoolPair {
   string creator = 1;
   string alphaDenom = 2;
-  string alphaAmount = 3;
+  string alphaAmount = 3[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ];
   string betaDenom = 4;
-  string betaAmount = 5;
-  string shareAmount = 6;
-  string swapFee = 7;
-  string exitFee = 8;
+  string betaAmount = 5[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ];
+  string shareAmount = 6[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ];
+  string swapFee = 7[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
+    (gogoproto.nullable) = false
+  ];
+  string exitFee = 8[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
+    (gogoproto.nullable) = false
+  ];
 }
 
 message MsgCreatePoolPairResponse {

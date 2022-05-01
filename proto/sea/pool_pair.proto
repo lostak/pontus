@@ -1,16 +1,33 @@
 syntax = "proto3";
 package VelaChain.pontus.sea;
 
+import "gogoproto/gogo.proto";
+
 option go_package = "github.com/VelaChain/pontus/x/sea/types";
 
 message PoolPair {
   string alphaDenom = 1; 
   string betaDenom = 2; 
-  string alphaAmount = 3; 
-  string betaAmount = 4; 
-  string shareAmount = 5; 
-  string swapFee = 6; 
-  string exitFee = 7; 
+  string alphaAmount = 3[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ]; 
+  string betaAmount = 4[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ]; 
+  string shareAmount = 5[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ]; 
+  string swapFee = 6[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
+    (gogoproto.nullable) = false
+  ]; 
+  string exitFee = 7[
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
+    (gogoproto.nullable) = false
+  ]; 
   
 }
 

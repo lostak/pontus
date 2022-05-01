@@ -9,7 +9,7 @@ const TypeMsgCreatePoolPair = "create_pool_pair"
 
 var _ sdk.Msg = &MsgCreatePoolPair{}
 
-func NewMsgCreatePoolPair(creator string, alphaDenom string, alphaAmount string, betaDenom string, betaAmount string, shareAmount string, swapFee string, exitFee string) *MsgCreatePoolPair {
+func NewMsgCreatePoolPair(creator string, alphaDenom string, alphaAmount sdk.Int, betaDenom string, betaAmount sdk.Int, shareAmount sdk.Int, swapFee sdk.Dec, exitFee sdk.Dec) *MsgCreatePoolPair {
 	return &MsgCreatePoolPair{
 		Creator:     creator,
 		AlphaDenom:  alphaDenom,
