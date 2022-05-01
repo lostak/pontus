@@ -1,0 +1,16 @@
+syntax = "proto3";
+package VelaChain.pontus.sea;
+
+option go_package = "github.com/VelaChain/pontus/x/sea/types";
+
+message PoolPair {
+  string alphaDenom = 1; 
+  string betaDenom = 2; 
+  string alphaAmount = 3; 
+  string betaAmount = 4; 
+  string shareAmount = 5; 
+  string swapFee = 6; 
+  string exitFee = 7; 
+  
+}
+

@@ -1,0 +1,90 @@
+syntax = "proto3";
+package VelaChain.pontus.sea;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "sea/params.proto";
+import "sea/provider.proto";
+import "sea/pool_pair.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "github.com/VelaChain/pontus/x/sea/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/VelaChain/pontus/sea/params";
+  }
+  // Queries a Provider by index.
+	rpc Provider(QueryGetProviderRequest) returns (QueryGetProviderResponse) {
+		option (google.api.http).get = "/VelaChain/pontus/sea/provider/{poolName}/{address}";
+	}
+
+	// Queries a list of Provider items.
+	rpc ProviderAll(QueryAllProviderRequest) returns (QueryAllProviderResponse) {
+		option (google.api.http).get = "/VelaChain/pontus/sea/provider";
+	}
+
+// Queries a PoolPair by index.
+	rpc PoolPair(QueryGetPoolPairRequest) returns (QueryGetPoolPairResponse) {
+		option (google.api.http).get = "/VelaChain/pontus/sea/pool_pair/{alphaDenom}/{betaDenom}";
+	}
+
+	// Queries a list of PoolPair items.
+	rpc PoolPairAll(QueryAllPoolPairRequest) returns (QueryAllPoolPairResponse) {
+		option (google.api.http).get = "/VelaChain/pontus/sea/pool_pair";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetProviderRequest {
+	  string poolName = 1;
+  string address = 2;
+
+}
+
+message QueryGetProviderResponse {
+	Provider provider = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllProviderRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllProviderResponse {
+	repeated Provider provider = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetPoolPairRequest {
+	  string alphaDenom = 1;
+  string betaDenom = 2;
+
+}
+
+message QueryGetPoolPairResponse {
+	PoolPair poolPair = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPoolPairRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPoolPairResponse {
+	repeated PoolPair poolPair = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

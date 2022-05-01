@@ -1,0 +1,19 @@
+syntax = "proto3";
+package VelaChain.pontus.sea;
+
+import "gogoproto/gogo.proto";
+import "sea/params.proto";
+import "sea/provider.proto";
+import "sea/pool_pair.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/VelaChain/pontus/x/sea/types";
+
+// GenesisState defines the sea module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  string port_id = 2;
+  repeated Provider providerList = 3 [(gogoproto.nullable) = false];
+  repeated PoolPair poolPairList = 4 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
